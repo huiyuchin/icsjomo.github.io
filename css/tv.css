@@ -1,17 +1,20 @@
 .tv-frame {
-  width: 660px; /* 調整寬度以符合一般網頁播放器 */
-  height: 600px; /* 將高度設為371px以保持16:9比例 */
+  width: 700px; /* 框架的固定寬度 */
+  height: 640px; /* 框架的固定高度 */
   margin: 10px auto;
   padding: 20px; /* 調整內邊距 */
-  background: #f3eccf; /* 改為白色背景 */
+  background: #f3eccf; /* 背景色 */
   border-radius: 20px;
-  border: 5px solid #B2DFDB; /* 減少邊框厚度 */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* 減少陰影強度 */
+  border: 5px solid #B2DFDB; /* 框架的邊框 */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* 陰影樣式 */
   position: relative;
-  overflow: hidden;
   margin-left: 83px;
   text-align: center;
 }
+.tv-frame {
+  padding-bottom: 20px; /* 增加框架底部的內邊距 */
+}
+
 
 .tv-title {
   text-align: center; /* 標題居中 */
@@ -25,15 +28,16 @@
 }
 
 .tv-frame img {
-  width: 90%; /* 使圖片寬度佔滿容器 */
-  height: auto; /* 高度自動以保持比例 */
-  max-height: 480px; /* 設置最大高度以符合 16:9 比例 */
-  aspect-ratio: 16 / 12; /* 設置長寬比為 16:9*/
-  object-fit: cover; /* 使圖片覆蓋容器並保持比例 */
-  position: relative;
-  top: 10px; /* 調整數值以適合需要的移動量 */
+  width: auto; /* 讓圖片保持寬度自適應 */
+  height: auto; /* 高度自適應 */
+  max-width: 90%; /* 圖片最大寬度 */
+  max-height: 90%; /* 圖片最大高度，確保圖片不會超出容器 */
+  aspect-ratio: 1 / 1; /* 圖片保持正方形比例 */
+  object-fit: contain; /* 確保圖片完整顯示 */
+  border: none; /* 移除圖片的框線 */
+  display: block; /* 保證圖片的塊級顯示 */
+  margin: 0 auto; /* 圖片居中 */
 }
-
 
 .progress {
   width: 100%;
@@ -62,16 +66,18 @@
 }
 
 
+
+/* 預設樣式（大螢幕） */
 .controls-container select {
-  margin-right: 80px;
+  margin-right: 80px; /* 與其他元素保持距離 */
   padding: 5px;
   font-size: 14px;
   border-radius: 5px;
 }
 
-.controls-container button  {
-  margin: 0 10px;
-  padding: 8px 15px;
+.controls-container button {
+  margin: 0 5px; /* 控制按鈕間距 */
+  padding: 8px 15px; /* 按鈕內邊距 */
   font-size: 14px;
   border-radius: 5px;
   background-color: #3f96ab;
@@ -79,8 +85,38 @@
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin: 0 5px; /* 控制按鈕間距 */
 }
+
+/* 當螢幕寬度小於 768px 時調整樣式 */
+@media (max-width: 768px) {
+  .controls-container select {
+    margin-right: 40px; /* 減少間距以節省空間 */
+    padding: 4px;
+    font-size: 12px; /* 縮小字體大小 */
+  }
+
+  .controls-container button {
+    margin: 0 3px; /* 減少按鈕間距 */
+    padding: 6px 12px; /* 縮小按鈕內邊距 */
+    font-size: 12px; /* 縮小字體大小 */
+  }
+}
+
+/* 當螢幕寬度小於 576px 時進一步調整 */
+@media (max-width: 576px) {
+  .controls-container select {
+    margin-right: 20px; /* 繼續縮小間距 */
+    padding: 3px;
+    font-size: 10px; /* 縮小字體大小 */
+  }
+
+  .controls-container button {
+    margin: 0 2px; /* 再次縮小按鈕間距 */
+    padding: 5px 10px; /* 進一步縮小按鈕內邊距 */
+    font-size: 10px; /* 更小字體大小 */
+  }
+}
+
 
 
 audio {
@@ -143,10 +179,20 @@ margin-top: -25px !important; /* 移除上方的間距 */
   width: 100px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .tv-frame {
       width: 90%; /* 播放器佔頁面 90% 寬度 */
       height: auto;
       margin: 20px auto 0 auto; /* 保持居中 */
   }
+
+  .tv-title {
+    font-size: 1.2em; /* 調整字體大小 */
+    top: 10px; /* 適當縮小上方間距 */
+}
+.tv-frame {
+  padding-bottom: 10px; /* 增加框架底部的內邊距 */
+}
+
+ 
 }
